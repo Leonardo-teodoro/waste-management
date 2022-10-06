@@ -1,0 +1,36 @@
+<div class="logo">
+  WasteManagement
+</div>
+<div class="col-md-4">
+  <div class="card">
+    <h5 class="card-title mx-4 my-4">Login</h5>
+
+    <div class="card-body">
+      
+      <%= form_with url: login_path, scope: :user do |form| %>
+        <div class="mx-4 my-4">
+          <%= form.label :email, 'Email', class:'form-label'%>
+          <%= form.email_field :email, required: true, class: 'form-control' %>
+        </div>
+        <div class="mx-4 my-4">
+          <%= form.label :password, 'Senha', class:'form-label' %>
+          <%= form.password_field :password, required: true, class: 'form-control' %>
+        </div>
+        <div class="mx-4 my-4">
+          <%= form.label :remember_me, 'Lembrar', class:'form-label' %>
+          <%= form.check_box :remember_me, class: 'form-check-input' %>
+        </div>
+        <div class="mx-4 my-4">
+          <%= form.submit "Iniciar sessão", class:"btn btn-primary text-light gradient" %>
+        </div>
+        
+        <hr >
+         <div class="form-text">É sua primeira vez por aqui? <%= link_to "Cadastre-se", sign_up_path, class: 'link' %></div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="">
+  <%= render partial: "shared/notice", locals: { flash: flash } %>
+</div>
+

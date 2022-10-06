@@ -1,0 +1,54 @@
+<div class="col-md-4 col-sm-12 bg-light bg-gradient d-flex justify-content-center align-items-center my-5 rounded-1">
+  <%= form_with model: @user, url: account_path, method: :put do |form| %>
+    <%= render partial: "shared/form_errors", locals: { object: form.object } %>
+    <div class="mx-4 my-4">
+      <%= form.label :email, "Email atual", class:"form-label" %>
+      <%= form.email_field :email, disabled: true, readonly: true, class:"form-control" %>
+    </div>
+    <div class="mx-4 my-4">
+      <%= form.label :unconfirmed_email, "Novo Email", class:"form-label" %>
+      <%= form.text_field :unconfirmed_email, class:"form-control" %>
+    </div>
+    <div class="mx-4 my-4">
+      <%= form.label :password, "Nova senha", class:"form-label" %>
+      <%= form.password_field :password, class:"form-control" %>
+      <div class="form-text">Deixe em branco se não deseja alterá-la</div>
+    </div>
+    <div class="mx-4 my-4">
+      <%= form.label :password_confirmation, "Confirmação da senha", class:"form-label" %>
+      <%= form.password_field :password_confirmation, class:"form-control" %>
+      <div class="form-text">Deixe em branco se não alterar a senha atual</div>
+    </div>
+    <hr/>
+    <div class="mx-4 my-4">
+      <%= form.label :current_password, "Senha atual", class:"form-label" %>
+      <%= form.password_field :current_password, required: true, class:"form-control" %>
+      <div class="form-text">Para atualizar a conta, confirme a senha atual.</div>
+    </div>
+    <div class="mx-4 my-4">  
+      <%= form.submit "Atualizar conta", class:"btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
+
+<div class="d-flex flex-column align-content-between align-items-center">
+  <h2 class="">Logins</h2>
+  <% if @active_sessions.any? %> 
+    <div class="d-flex justify-content-center my-5">
+      <%= button_to "Sair de todas as sessões", destroy_all_active_sessions_path, method: :delete, class:"btn btn-danger" %>
+    </div>
+    <table class="table table-dark table-striped">
+      <thead>
+        <tr>
+          <th scope='col'>User Agent</th>
+          <th scope='col'>IP Address</th>
+          <th scope='col'>Logado em</th>
+          <th scope='col'>Sair</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render @active_sessions %>
+    </tbody>
+    </table>
+  <% end %>
+</div>

@@ -1,0 +1,40 @@
+
+
+
+
+<div class="logo">
+  WasteManagement
+</div>
+<div class="col-md-4">
+  <div class="card">
+    <h5 class="card-title mx-4 my-4">Novo usuário</h5>
+
+    <div class="card-body">
+      
+      <%= form_with model: @user, url: sign_up_path do |form| %>
+        <%= render partial: "shared/form_errors", locals: { object: form.object } %>
+        <div class="mx-4 my-4">
+          <%= form.label :email, "Email", class: "form-label" %>
+          <%= form.email_field :email, required: true, class:"form-control" %>
+        </div>
+        <div class="mx-4 my-4">
+          <%= form.label :password,"Senha", class: "form-label" %>
+          <%= form.password_field :password, required: true, class:"form-control" %>
+        </div>
+        <div class="mx-4 my-4">
+          <%= form.label :password_confirmation,"Confirmação da senha", class: "form-label" %>
+          <%= form.password_field :password_confirmation, required: true, class:"form-control" %>
+        </div>
+        <div class="mx-4 my-4">
+          <%= form.submit "Criar usuário", class:"btn btn-primary text-light gradient" %>
+        </div>
+        <hr >
+         <div class="form-text">Já possui um usuário? <%= link_to "Logar", login_path, class: 'link' %></div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="">
+  <%= render partial: "shared/notice", locals: { flash: flash } %>
+</div>
+
