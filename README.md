@@ -1,24 +1,43 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a Web application to manage waste disposal sites using:
 
-Things you may want to cover:
+- Rails: 7.0.4
+- Ruby: 2.7.0
+- Bootstrap: 5.1
 
-* Ruby version
+## Setup
 
-* System dependencies
+First, you'll need to configure your project with:
 
-* Configuration
+```
+bundle install
+yarn run css:build
+```
 
-* Database creation
+Then, set the database via:
 
-* Database initialization
+```
+rails db:create
+rails db:migrate
+```
 
-* How to run the test suite
+To start the development server, run:
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+bin/dev
+```
 
-* Deployment instructions
+## Documentation
 
-* ...
+This section will introduce the web application's context, with diagrams and tables.
+
+### DER
+
+![Entity relationship diagram](/app/assets/images/der.png)
+
+### Dependencies
+
+| Dependencies | Version |
+| ------------ | ------- |
+| Yarn         | 1.22.5  |
