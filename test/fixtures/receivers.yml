@@ -1,0 +1,29 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  email: MyString
+  condition: false
+  truly_linfo: false
+  cep: 1
+  state: MyString
+  city: MyString
+  street: MyString
+  number: 1
+  complement: MyString
+  approved: false
+  link: MyString
+
+two:
+  name: MyString
+  email: MyString
+  condition: false
+  truly_linfo: false
+  cep: 1
+  state: MyString
+  city: MyString
+  street: MyString
+  number: 1
+  complement: MyString
+  approved: false
+  link: MyString

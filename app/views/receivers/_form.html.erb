@@ -1,0 +1,77 @@
+<%= form_with(model: receiver) do |form| %>
+  <% if receiver.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(receiver.errors.count, "error") %> prohibited this receiver from being saved:</h2>
+
+      <ul>
+        <% receiver.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :email, style: "display: block" %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div>
+    <%= form.label :condition, style: "display: block" %>
+    <%= form.check_box :condition %>
+  </div>
+
+  <div>
+    <%= form.label :truly_linfo, style: "display: block" %>
+    <%= form.check_box :truly_linfo %>
+  </div>
+
+  <div>
+    <%= form.label :cep, style: "display: block" %>
+    <%= form.number_field :cep %>
+  </div>
+
+  <div>
+    <%= form.label :state, style: "display: block" %>
+    <%= form.text_field :state %>
+  </div>
+
+  <div>
+    <%= form.label :city, style: "display: block" %>
+    <%= form.text_field :city %>
+  </div>
+
+  <div>
+    <%= form.label :street, style: "display: block" %>
+    <%= form.text_field :street %>
+  </div>
+
+  <div>
+    <%= form.label :number, style: "display: block" %>
+    <%= form.number_field :number %>
+  </div>
+
+  <div>
+    <%= form.label :complement, style: "display: block" %>
+    <%= form.text_field :complement %>
+  </div>
+
+  <div>
+    <%= form.label :approved, style: "display: block" %>
+    <%= form.check_box :approved %>
+  </div>
+
+  <div>
+    <%= form.label :link, style: "display: block" %>
+    <%= form.text_field :link %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

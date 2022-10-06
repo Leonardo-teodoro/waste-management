@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Receivers</h1>
+
+<div id="receivers">
+  <% @receivers.each do |receiver| %>
+    <%= render receiver %>
+    <p>
+      <%= link_to "Show this receiver", receiver %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New receiver", new_receiver_path %>
