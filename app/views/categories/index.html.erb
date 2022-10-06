@@ -1,0 +1,45 @@
+<div class="container-categories rounded-1 h-75 d-flex flex-column justify-content-start align-items-center">
+  <div class="my-4 mx-4">
+    <h1>Categorias</h1>
+  </div>
+  <div class="mx-4 my-4">
+    <%= link_to new_category_path, class:"btn btn-outline-success" do %>
+      <i class="bi bi-plus-circle-fill">Adicionar</i>
+    <% end %>
+  </div>
+  <div class="">
+    <div class="table ">
+        <table class="responsive-table table-dark  table-striped align-middle">
+        <thead >
+          <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Criado em</th>
+            <th scope="col">Atualizado em</th>
+            <th scope="col">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @categories.each do |category| %>
+          <tr>
+            <td> <%= category.name %> </td>
+            <td> <%= category.created_at %> </td>
+            <td> <%= category.updated_at %> </td>
+            <td >
+            <div class="d-flex justify-content-end">
+              <%= link_to edit_category_path(category), class: 'btn btn-primary' do %> 
+                  <i class="bi bi-pencil-square"></i>
+              <% end %>
+            <%= button_to category, form: { data: { turbo_confirm: "Tem certeza?" } }, method: :delete, class:"btn btn-danger ml-4" do %>
+                  <i class="bi bi-x-circle"></i>
+            <% end %>
+            </div> 
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+</div>

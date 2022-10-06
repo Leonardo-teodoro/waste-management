@@ -1,0 +1,26 @@
+<%= form_with(model: category) do |form| %>
+  <% if category.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(category.errors.count, "error") %> impediram que esta categoria fosse salva:</h2>
+
+      <ul>
+        <% category.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="card">
+  <div class="card-body">
+    <div class="my-4 mx-4">
+      <%= form.label :name, "Nome", class:"form-label" %>
+      <%= form.text_field :name, class:"form-control"%>
+    </div>
+
+    <div class="my-4 mx-4">
+      <%= form.submit "Enviar", class:"btn btn-primary" %>
+    </div>
+  </div>
+  
+</div>
+<% end %>

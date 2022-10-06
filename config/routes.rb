@@ -19,4 +19,7 @@ Rails.application.routes.draw do
       delete "destroy_all"
     end
   end
+  resources :categories do
+    delete "destroy"
+  end
 end

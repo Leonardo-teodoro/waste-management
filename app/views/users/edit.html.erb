@@ -27,28 +27,44 @@
     </div>
     <div class="mx-4 my-4">  
       <%= form.submit "Atualizar conta", class:"btn btn-primary" %>
+          <% if @active_sessions.any? %> 
+          <!-- Button trigger modal -->
+            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Sessões ativas
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Sessões ativas</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body table">
+                    <table class=" table-responsive table-striped table-hover align-middle">
+                      <thead>
+                        <tr>
+                          <th scope='col'>User Agent</th>
+                          <th scope='col'>Endereço de IP</th>
+                          <th scope='col'>Logado em</th>
+                          <th scope='col'>Ações</th>
+                        </tr>
+                      </thead>
+                    <%= render @active_sessions %>
+                    </table>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <div class="d-flex justify-content-center my-5">
+                      <%= button_to "Sair de todas as sessões", destroy_all_active_sessions_path, method: :delete, class:"btn btn-danger" %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+      <% end %>
+
     </div>
   <% end %>
 </div>
 
-<div class="d-flex flex-column align-content-between align-items-center">
-  <h2 class="">Logins</h2>
-  <% if @active_sessions.any? %> 
-    <div class="d-flex justify-content-center my-5">
-      <%= button_to "Sair de todas as sessões", destroy_all_active_sessions_path, method: :delete, class:"btn btn-danger" %>
-    </div>
-    <table class="table table-dark table-striped">
-      <thead>
-        <tr>
-          <th scope='col'>User Agent</th>
-          <th scope='col'>IP Address</th>
-          <th scope='col'>Logado em</th>
-          <th scope='col'>Sair</th>
-        </tr>
-      </thead>
-      <tbody>
-        <%= render @active_sessions %>
-    </tbody>
-    </table>
-  <% end %>
-</div>
