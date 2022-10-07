@@ -73,3 +73,7 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+group :development do
+  gem 'guard-livereload', '~> 2.5', require: false
+  gem "rack-livereload"
+end
