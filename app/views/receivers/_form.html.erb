@@ -1,6 +1,6 @@
-<%= form_with(model: receiver) do |form| %>
+<%= form_with model: receiver, class:"row g-3 bg-light rounded-1 my-4 mx-4" do |form| %>
   <% if receiver.errors.any? %>
-    <div style="color: red">
+    <div style="color: red" class="col-md-12">
       <h2><%= pluralize(receiver.errors.count, "error") %> prohibited this receiver from being saved:</h2>
 
       <ul>
@@ -10,68 +10,57 @@
       </ul>
     </div>
   <% end %>
-
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.text_field :email %>
-  </div>
-
-  <div>
-    <%= form.label :condition, style: "display: block" %>
-    <%= form.check_box :condition %>
-  </div>
-
-  <div>
-    <%= form.label :truly_linfo, style: "display: block" %>
-    <%= form.check_box :truly_linfo %>
-  </div>
-
-  <div>
-    <%= form.label :cep, style: "display: block" %>
-    <%= form.number_field :cep %>
-  </div>
-
-  <div>
-    <%= form.label :state, style: "display: block" %>
-    <%= form.text_field :state %>
-  </div>
-
-  <div>
-    <%= form.label :city, style: "display: block" %>
-    <%= form.text_field :city %>
-  </div>
-
-  <div>
-    <%= form.label :street, style: "display: block" %>
-    <%= form.text_field :street %>
-  </div>
-
-  <div>
-    <%= form.label :number, style: "display: block" %>
-    <%= form.number_field :number %>
-  </div>
-
-  <div>
-    <%= form.label :complement, style: "display: block" %>
-    <%= form.text_field :complement %>
-  </div>
-
-  <div>
-    <%= form.label :approved, style: "display: block" %>
-    <%= form.check_box :approved %>
-  </div>
-
-  <div>
-    <%= form.label :link, style: "display: block" %>
-    <%= form.text_field :link %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
+    <div class="col-md-4 mx-4 my-2">
+      <%= form.label :email, class:"form-label" %>
+      <%= form.text_field :email, class:"form-control"%>
+    </div>
+    <div class="col-md-6 mx-4 my-2">
+      <%= form.label :name, "Nome", class:"form-label" %>
+      <%= form.text_field :name, class:"form-control"%>
+    </div>
+    <div class="col-2 mx-4 my-2">
+      <%= form.label :cep,"CEP", class:"form-label" %>
+      <%= form.number_field :cep, class:"form-control"%>
+    </div>
+    <div class="col-2 mx-4 my-2">
+      <%= form.label :state, "Estado", class:"form-label" %>
+      <%= form.text_field :state, class:"form-control"%>
+    </div>
+    <div class="col-3 mx-4 my-2">
+      <%= form.label :city, "Cidade", class:"form-label" %>
+      <%= form.text_field :city, class:"form-control"%>
+    </div>
+    <div class="col-8 mx-4 my-2">
+      <%= form.label :street, "Rua",class:"form-label" %>
+      <%= form.text_field :street, class:"form-control"%>
+    </div>
+    <div class="col-1 mx-4 my-2">
+      <%= form.label :number, "Número",class:"form-label" %>
+      <%= form.number_field :number, class:"form-control"%>
+    </div>
+    <div class="col-4 mx-4 my-2">
+      <%= form.label :complement, "Complemento",class:"form-label" %>
+      <%= form.text_field :complement, class:"form-control"%>
+    </div>
+    <div class="col-10 mx-4 my-2">
+      <%= form.label :link, class:"form-label" %>
+      <%= form.text_field :link, class:"form-control"%>
+    </div>
+    <div class="col-10 mx-4 my-2">
+      <div class="form-check">
+        <%= form.label :condition, "Condição", class:"form-check-label"%>
+        <%= form.check_box :condition, class:"form-check-input" %>
+      </div>
+      <div class="form-check">
+        <%= form.label :truly_linfo, class:"form-check-label" %>
+        <%= form.check_box :truly_linfo, class:"form-check-input" %>
+      </div>
+      <div class="form-check">
+        <%= form.label :approved, "Aprovado",class:"form-check-label" %>
+        <%= form.check_box :approved, class:"form-check-input" %>
+      </div>
+    </div>
+    <div class="col-10 mx-4 my-2 d-flex justify-content-end">
+      <%= form.submit "Enviar", class:"btn btn-primary" %>
+    </div>
 <% end %>
