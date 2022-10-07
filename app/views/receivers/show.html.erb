@@ -1,10 +1,3 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @receiver %>
-
-<div>
-  <%= link_to "Edit this receiver", edit_receiver_path(@receiver) %> |
-  <%= link_to "Back to receivers", receivers_path %>
-
-  <%= button_to "Destroy this receiver", @receiver, method: :delete %>
-</div>
+<h1>Editando receptor</h1>
+<%= render "form", receiver: @receiver %>
+<%= link_to "Voltar para receptores", receivers_path, class: 'text-light'%>

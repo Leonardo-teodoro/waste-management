@@ -1,14 +1,56 @@
-<p style="color: green"><%= notice %></p>
+<div class="container-forms col-md-6 col-sm-10 mx-4 rounded-1 h-75 d-flex flex-column justify-content-start align-items-center bg-dark bg-gradient">
+  <div class="col-md-12 my-4 mx-4 d-flex justify-content-center">
+    <h1 class="text-light">Receptores</h1>
+  </div>
+  <div class="mx-4 my-4">
+    <%= link_to new_receiver_path, class:"btn btn-outline-primary" do %>
+      <i class="bi bi-plus-circle-fill"> Adicionar</i>
+    <% end %>
+  </div>
+  <div class="">
+    <div class="table">
+        <table class=" responsive-table-sm table table-light  table-striped align-middle">
+        <thead >
+          <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Email</th>
+            <th scope="col">CEP</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Cidade</th>
+            <th scope="col">Condicionado</th>
+            <th scope="col">Aprovado</th>
+            <th scope="col">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @receivers.each do |receiver| %>
+        <%= link_to receiver do %>
+          <tr>
+            <td> <%= receiver.name %> </td>
+            <td> <%= receiver.email %> </td>
+            <td> <%= receiver.cep %> </td>
+            <td> <%= receiver.state %> </td>
+            <td> <%= receiver.city %> </td>
+            <td> <%= receiver.condition ? icon('check-circle-fill', 'success') : icon('emoji-expressionless-fill', 'danger') %> </td>
+            <td> <%= receiver.approved ? icon('check-circle-fill', 'success') : icon('emoji-expressionless-fill', 'danger') %> </td>
+        <% end %>
+            <td >
+            <div class="d-flex justify-content-">
+              <%= link_to edit_receiver_path(receiver), class: 'btn btn-primary' do %> 
+                  <i class="bi bi-pencil-square"></i>
+              <% end %>
+            <%= button_to receiver, form: { data: { turbo_confirm: "Tem certeza?" } }, method: :delete, class:"btn btn-danger ml-4" do %>
+                  <i class="bi bi-x-circle"></i>
+            <% end %>
+            </div> 
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
 
-<h1>Receivers</h1>
+    </div>
+  </div>
 
-<div id="receivers">
-  <% @receivers.each do |receiver| %>
-    <%= render receiver %>
-    <p>
-      <%= link_to "Show this receiver", receiver %>
-    </p>
-  <% end %>
 </div>
 
-<%= link_to "New receiver", new_receiver_path %>
