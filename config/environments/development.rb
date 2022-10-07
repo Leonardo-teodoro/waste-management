@@ -69,4 +69,16 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
 
   config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
+
+  # Add Rack::LiveReload to the bottom of the middleware stack with the default options:
+  config.middleware.insert_after ActionDispatch::Static, Rack::LiveReload
+  # Specifying Rack::LiveReload options.
+  config.middleware.use(Rack::LiveReload,
+  min_delay: 500,    # default 1000
+  max_delay: 10_000, # default 60_000
+  live_reload_port: 56789,  # default 35729
+  live_reload_scheme: 'ws', # default ws, use wss for ssl
+  host: 'localhost',
+  ignore: [ %r{dont/modify\.html$} ]
+)
 end
