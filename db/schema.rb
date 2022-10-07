@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_06_215311) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_07_170713) do
   create_table "active_sessions", force: :cascade do |t|
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
@@ -24,6 +24,46 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_06_215311) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "receiver_id"
+    t.index ["receiver_id"], name: "index_categories_on_receiver_id"
+  end
+
+  create_table "discards", force: :cascade do |t|
+    t.string "description"
+    t.date "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_discards_on_user_id"
+  end
+
+  create_table "receivers", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.boolean "condition"
+    t.boolean "truly_linfo"
+    t.integer "cep"
+    t.string "state"
+    t.string "city"
+    t.string "street"
+    t.integer "number"
+    t.string "complement"
+    t.boolean "approved"
+    t.string "link"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "residues", force: :cascade do |t|
+    t.string "title"
+    t.string "subtitle"
+    t.text "content"
+    t.text "description"
+    t.string "link"
+    t.string "buttonContent"
+    t.string "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

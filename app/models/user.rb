@@ -7,6 +7,7 @@ class User < ApplicationRecord
 
   
   has_many :active_sessions, dependent: :destroy
+  has_many :discards, dependent: :destroy
   attr_accessor :current_password
 
   before_save :downcase_email
