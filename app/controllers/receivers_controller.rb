@@ -25,7 +25,7 @@ class ReceiversController < ApplicationController
 
     respond_to do |format|
       if @receiver.save
-        format.html { redirect_to receiver_url(@receiver), notice: "Receiver was successfully created." }
+        format.html { redirect_to receiver_url(@receiver), notice: "Receptor foi criado com sucesso." }
         format.json { render :show, status: :created, location: @receiver }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,8 @@ class ReceiversController < ApplicationController
   def update
     respond_to do |format|
       if @receiver.update(receiver_params)
-        format.html { redirect_to receiver_url(@receiver), notice: "Receiver was successfully updated." }
+        
+        format.html { redirect_to receiver_url(@receiver), notice: "Receptor foi atualizado com sucesso." }
         format.json { render :show, status: :ok, location: @receiver }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +53,7 @@ class ReceiversController < ApplicationController
     @receiver.destroy
 
     respond_to do |format|
-      format.html { redirect_to receivers_url, notice: "Receiver was successfully destroyed." }
+      format.html { redirect_to receivers_url, notice: "Receptor foi deletado com sucesso" }
       format.json { head :no_content }
     end
   end

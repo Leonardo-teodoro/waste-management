@@ -26,7 +26,7 @@ module Authentication
   end
 
   def redirect_if_authenticated
-    redirect_to root_path, alert: "Você já está logado." if user_signed_in?
+    redirect_to account_path, alert: "Você já está logado." if user_signed_in?
   end
 
   def authenticate_user!
