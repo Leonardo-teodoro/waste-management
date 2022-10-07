@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @residue %>
+
+<div>
+  <%= link_to "Edit this residue", edit_residue_path(@residue) %> |
+  <%= link_to "Back to residues", residues_path %>
+
+  <%= button_to "Destroy this residue", @residue, method: :delete %>
+</div>

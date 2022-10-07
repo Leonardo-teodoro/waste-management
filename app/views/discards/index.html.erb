@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Discards</h1>
+
+<div id="discards">
+  <% @discards.each do |discard| %>
+    <%= render discard %>
+    <p>
+      <%= link_to "Show this discard", discard %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New discard", new_discard_path %>

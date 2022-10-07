@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Residues</h1>
+
+<div id="residues">
+  <% @residues.each do |residue| %>
+    <%= render residue %>
+    <p>
+      <%= link_to "Show this residue", residue %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New residue", new_residue_path %>

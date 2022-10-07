@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @discard %>
+
+<div>
+  <%= link_to "Edit this discard", edit_discard_path(@discard) %> |
+  <%= link_to "Back to discards", discards_path %>
+
+  <%= button_to "Destroy this discard", @discard, method: :delete %>
+</div>

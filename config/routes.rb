@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :discards
+  resources :residues
   resources :receivers
   root "sessions#new"
   post "sign_up", to: "users#create"

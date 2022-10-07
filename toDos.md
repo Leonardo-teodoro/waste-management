@@ -1,0 +1,1 @@
+- [ ] Inserir o tipo mídia em residue
