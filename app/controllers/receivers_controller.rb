@@ -1,9 +1,19 @@
 class ReceiversController < ApplicationController
+  RECEIVERS_PER_PAGE = 10
   before_action :set_receiver, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
 
   # GET /receivers or /receivers.json
   def index
-    @receivers = Receiver.all
+    @page = params.fetch(:page, 1).to_i
+    @page = 1 if @page == 0
+   # Get the total number of receivers
+   count = Receiver.all.count
+
+   # Get the number of pages
+   @pages = ( count / RECEIVERS_PER_PAGE)
+   @pages = @pages + 1 if RECEIVERS_PER_PAGE > count 
+   @receivers = Receiver.offset((@page-1)*RECEIVERS_PER_PAGE).limit(RECEIVERS_PER_PAGE)
   end
 
   # GET /receivers/1 or /receivers/1.json

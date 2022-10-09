@@ -1,9 +1,19 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: %i[ show edit update destroy ]
   before_action :authenticate_user!
+
+  CATEGORIES_PER_PAGE = 5
   # GET /categories or /categories.json
   def index
-    @categories = Category.all
+    @page = params.fetch(:page, 1).to_i
+    @page = 1 if @page == 0
+    # Get the total number of residues
+    count = Category.all.count
+
+    # Get the number of pages
+    @pages = ( count / CATEGORIES_PER_PAGE)
+    @pages = @pages + 1 if CATEGORIES_PER_PAGE > count 
+    @categories = Category.offset((@page-1)*CATEGORIES_PER_PAGE).limit(CATEGORIES_PER_PAGE)
   end
 
   # GET /categories/1 or /categories/1.json
@@ -38,7 +48,7 @@ class CategoriesController < ApplicationController
   def update
     respond_to do |format|
       if @category.update(category_params)
-        format.html { redirect_to category_url(@category), notice: "Categoria atualizada com sucesso" }
+        format.html { redirect_to categories_path, notice: "Categoria atualizada com sucesso" }
         format.json { render :show, status: :ok, location: @category }
       else
         format.html { render :edit, status: :unprocessable_entity }
