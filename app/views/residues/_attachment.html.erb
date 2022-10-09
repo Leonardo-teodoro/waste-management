@@ -1,0 +1,11 @@
+<% if residue.image.attached? %>
+    <% if residue.image.image? %>
+      <div class="row">
+          <div class="message-image-container">
+            <%= image_tag residue.image, alt: 'Imagem do resíduo', class:"message-image", width: width, height: height %>
+          </div>
+      </div>
+    <% end %>
+<% else %>
+  <span>O resíduo não possui imagem associada.</span>
+<% end %>
