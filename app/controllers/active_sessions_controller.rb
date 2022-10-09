@@ -10,6 +10,7 @@ class ActiveSessionsController < ApplicationController
       redirect_to account_path, notice: "Sessão deletada."
     else
       forget_active_session
+      reset_session
       redirect_to root_path, notice: "Logout realizado."
     end
   end
@@ -17,7 +18,7 @@ class ActiveSessionsController < ApplicationController
   def destroy_all
     forget_active_session
     current_user.active_sessions.destroy_all
-
+    reset_session
     redirect_to root_path, notice: "Logout realizado."
   end
 end
