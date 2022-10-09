@@ -1,7 +1,10 @@
-<h1>Editando categoria</h1>
+<div class="row my-4">
+  <div class="col-md-12 mt-5">
+    <h1>Editando categoria</h1>
+  </div>
+</div>
 
 <%= render "form", category: @category %>
-
-<div>
-  <%= link_to "Voltar para categorias", categories_path, class: 'text-light' %>
+<div class="row bg-primary w-100">
+  <%= link_to "Voltar para categorias", categories_path, class:"text-light" %>
 </div>

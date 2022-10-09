@@ -1,4 +1,5 @@
-<%= form_with model: receiver, class:"row g-3 bg-light rounded-1 my-4 mx-4" do |form| %>
+<div class="col-md-4 col-sm-12 bg-light bg-gradient d-flex justify-content-center align-items-center my-5 rounded-1 mx-4">
+<%= form_with model: receiver, class:"row g-3 bg-light rounded-1 py-4 px-4" do |form| %>
   <% if receiver.errors.any? %>
     <div style="color: red" class="col-md-12">
       <h2><%= pluralize(receiver.errors.count, "error") %> prohibited this receiver from being saved:</h2>
@@ -10,43 +11,43 @@
       </ul>
     </div>
   <% end %>
-    <div class="col-md-4 mx-4 my-2">
+    <div class="col-md-10 col-sm-12">
       <%= form.label :email, class:"form-label" %>
       <%= form.text_field :email, class:"form-control"%>
     </div>
-    <div class="col-md-6 mx-4 my-2">
+    <div class="col-md-12 col-sm-12">
       <%= form.label :name, "Nome", class:"form-label" %>
       <%= form.text_field :name, class:"form-control"%>
     </div>
-    <div class="col-2 mx-4 my-2">
+    <div class="col-md-2 col-sm-12">
       <%= form.label :cep,"CEP", class:"form-label" %>
       <%= form.number_field :cep, class:"form-control"%>
     </div>
-    <div class="col-2 mx-4 my-2">
+    <div class="col-md-2 col-sm-12">
       <%= form.label :state, "Estado", class:"form-label" %>
       <%= form.text_field :state, class:"form-control"%>
     </div>
-    <div class="col-3 mx-4 my-2">
+    <div class="col-md-8 col-sm-12">
       <%= form.label :city, "Cidade", class:"form-label" %>
       <%= form.text_field :city, class:"form-control"%>
     </div>
-    <div class="col-8 mx-4 my-2">
+    <div class="col-md-8 col-sm-12">
       <%= form.label :street, "Rua",class:"form-label" %>
       <%= form.text_field :street, class:"form-control"%>
     </div>
-    <div class="col-1 mx-4 my-2">
+    <div class="col-md-3 col-sm-12">
       <%= form.label :number, "Número",class:"form-label" %>
       <%= form.number_field :number, class:"form-control"%>
     </div>
-    <div class="col-4 mx-4 my-2">
+    <div class="col-md-12 col-sm-12">
       <%= form.label :complement, "Complemento",class:"form-label" %>
       <%= form.text_field :complement, class:"form-control"%>
     </div>
-    <div class="col-10 mx-4 my-2">
+    <div class="col-md-10 col-sm-12">
       <%= form.label :link, class:"form-label" %>
       <%= form.text_field :link, class:"form-control"%>
     </div>
-    <div class="col-10 mx-4 my-2">
+    <div class="col-md-10 col-sm-12">
       <div class="form-check">
         <%= form.label :condition, "Condição", class:"form-check-label"%>
         <%= form.check_box :condition, class:"form-check-input" %>
@@ -60,7 +61,8 @@
         <%= form.check_box :approved, class:"form-check-input" %>
       </div>
     </div>
-    <div class="col-10 mx-4 my-2 d-flex justify-content-end">
+    <div class="col-md-12 d-flex justify-content-end">
       <%= form.submit "Enviar", class:"btn btn-primary" %>
     </div>
 <% end %>
+</div>
