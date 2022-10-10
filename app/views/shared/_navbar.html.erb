@@ -16,6 +16,12 @@
         <li class="nav-item">
           <%= link_to "Receptores", receivers_path, class:"nav-link" %>
         </li>
+        <li class="nav-item">
+          <%= link_to "Resíduos", residues_path, class:"nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Descartes", discards_path, class:"nav-link" %>
+        </li>
       </ul>
        <%= button_to "Sair", active_session_path(session[:current_active_session_id]),method: :delete, class:"d-flex btn btn-outline-danger" %>
     </div>

@@ -1,19 +1,11 @@
 class ReceiversController < ApplicationController
-  RECEIVERS_PER_PAGE = 10
-  before_action :set_receiver, only: %i[ show edit update destroy ]
+
+  before_action :set_receiver, only: %i[ show edit update destroy residues ]
   before_action :authenticate_user!
 
   # GET /receivers or /receivers.json
   def index
-    @page = params.fetch(:page, 1).to_i
-    @page = 1 if @page == 0
-   # Get the total number of receivers
-   count = Receiver.all.count
-
-   # Get the number of pages
-   @pages = ( count / RECEIVERS_PER_PAGE)
-   @pages = @pages + 1 if RECEIVERS_PER_PAGE > count 
-   @receivers = Receiver.offset((@page-1)*RECEIVERS_PER_PAGE).limit(RECEIVERS_PER_PAGE)
+   @receivers = Receiver.page params[:page]
   end
 
   # GET /receivers/1 or /receivers/1.json
@@ -22,7 +14,14 @@ class ReceiversController < ApplicationController
 
   # GET /receivers/new
   def new
+   
     @receiver = Receiver.new
+    unless Residue.any?
+      redirect_to receivers_path, alert: "É necessário cadastrar resíduos primeiramente." 
+    end
+    unless Category.any?
+      redirect_to receivers_path, alert: "É necessário cadastrar categorias primeiramente." 
+    end
   end
 
   # GET /receivers/1/edit
@@ -76,6 +75,8 @@ class ReceiversController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def receiver_params
-      params.require(:receiver).permit(:name, :email, :condition, :truly_linfo, :cep, :state, :city, :street, :number, :complement, :approved, :link)
+      params.require(:receiver).permit(:name, :email, :condition, :truly_linfo, :cep, :state,
+                                       :city, :street, :number, :complement, :approved, :link,
+                                       :category_id, :residue_id)
     end
 end

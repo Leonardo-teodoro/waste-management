@@ -1,7 +1,7 @@
 <%= form_with model: residue, class:"row g-3 bg-light rounded-1 px-4 py-4 my-4 mx-4" do |form| %>
   <% if residue.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(residue.errors.count, "error") %> prohibited this residue from being saved:</h2>
+      <h2><%= pluralize(residue.errors.count, "error") %> proibiram este resíduo de ser salvo:</h2>
 
       <ul>
         <% residue.errors.each do |error| %>

@@ -2,7 +2,7 @@
 <%= form_with model: receiver, class:"row g-3 bg-light rounded-1 py-4 px-4" do |form| %>
   <% if receiver.errors.any? %>
     <div style="color: red" class="col-md-12">
-      <h2><%= pluralize(receiver.errors.count, "error") %> prohibited this receiver from being saved:</h2>
+      <h2><%= pluralize(receiver.errors.count, "error") %> proibiram este receptor de ser salvo:</h2>
 
       <ul>
         <% receiver.errors.each do |error| %>
@@ -46,6 +46,20 @@
     <div class="col-md-10 col-sm-12">
       <%= form.label :link, class:"form-label" %>
       <%= form.text_field :link, class:"form-control"%>
+    </div>
+    <div class="col-md-10">
+      <%= form.label :category_id, "Categoria",class:"form-label" %>
+      <%= form.select(:category_id, 
+                       options_for_select(Category.all.map{ | category | [ category.name, category.id ] }),
+                       {prompt: "Selecione uma categoria"},
+                       {:class=>"form-select"}) %>
+    </div>
+    <div class="col-md-10">
+      <%= form.label :residue_id, "Resíduo",class:"form-label" %>
+      <%= form.select(:residue_id, 
+                       options_for_select(Residue.all.map{ | residue | [ residue.title, residue.id ] }),
+                       {prompt: "Selecione os resíduos"},
+                       {:class=>"form-select select2"}) %>
     </div>
     <div class="col-md-10 col-sm-12">
       <div class="form-check">

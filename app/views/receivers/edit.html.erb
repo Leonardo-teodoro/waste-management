@@ -1,11 +1,10 @@
-<div class="row mt-5">
+<div class="row my-4">
   <div class="col-md-12 mt-5">
     <h1>Editando receptor</h1>
   </div>
 </div>
 
 <%= render "form", receiver: @receiver %>
-<div class="row bg-primary w-100">
-  <%= link_to "Show this receiver", @receiver  %> |
-  <%= link_to "Back to receivers", receivers_path %>
+<div class="col-md-12 px-4 py-4 bg-primary w-100">
+  <%= link_to "Voltar para receptores", receivers_path, class:"text-light" %>
 </div>

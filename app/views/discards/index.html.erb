@@ -1,14 +1,54 @@
-<p style="color: green"><%= notice %></p>
+  <div class="text-center col-12">
+        <h1 class="text-dark">Descartes</h1>
+    </div>
+<div class="bg-light col-12">
+  <div class="d-flex justify-content-center bg-light bg-gradient flex-column py-2 px-2">
+      <div class="col-md-1 mx-md-2 mx-sm-0 col-sm-12">
+        <%= link_to new_discard_path, class:"btn btn-outline-primary" do %>
+          <i class="bi bi-plus-circle-fill"> Adicionar</i>
+        <% end %>
+      </div>
+  </div>
+  <div class="table-responsive col-12">
+        <table class="table table-light  table-striped align-middle">
+        <thead class="table-light">
+          <tr>
+            <th scope="col">Autor</th>
+            <th scope="col">Descrição</th>
+            <th scope="col">Data</th>
+            <th scope="col">Resíduo</th>
+            <th scope="col">Receptor</th>
+            <th scope="col">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
 
-<h1>Discards</h1>
+        <% @discards.each do |discard| %>
+          <tr>
+              <td> <%= discard.user.email %> </td>
+              <td> <%= discard.description %> </td>
+              <td> <%= discard.date %> </td>
+              <td> <%= link_to discard.residue.title, residue_path(discard.residue_id) %> </td>
+              <td> <%= link_to discard.receiver.email, receiver_path(discard.receiver_id) %> </td>
+              <td >
+                <div class="d-flex justify-content-end">
+                  <%= link_to edit_discard_path(discard), class: 'btn btn-outline-primary' do %> 
+                      <i class="bi bi-pencil-square"></i>
+                  <% end %>
+                <%= button_to discard, form: { data: { turbo_confirm: "Tem certeza?" } }, method: :delete, class:"btn btn-outline-danger ml-4" do %>
+                      <i class="bi bi-x-circle"></i>
+                <% end %>
+                </div> 
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
 
-<div id="discards">
-  <% @discards.each do |discard| %>
-    <%= render discard %>
-    <p>
-      <%= link_to "Show this discard", discard %>
-    </p>
-  <% end %>
+    </div>
+    <div class="d-flex row justify-content-between col-12 bg-light bg-transparent py-4 px-2">
+      <%= paginate(@discards) %>
+    </div>
+   
 </div>
 
-<%= link_to "New discard", new_discard_path %>

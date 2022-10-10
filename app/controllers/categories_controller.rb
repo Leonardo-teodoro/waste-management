@@ -1,19 +1,10 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: %i[ show edit update destroy ]
   before_action :authenticate_user!
-
-  CATEGORIES_PER_PAGE = 5
+  
   # GET /categories or /categories.json
   def index
-    @page = params.fetch(:page, 1).to_i
-    @page = 1 if @page == 0
-    # Get the total number of residues
-    count = Category.all.count
-
-    # Get the number of pages
-    @pages = ( count / CATEGORIES_PER_PAGE)
-    @pages = @pages + 1 if CATEGORIES_PER_PAGE > count 
-    @categories = Category.offset((@page-1)*CATEGORIES_PER_PAGE).limit(CATEGORIES_PER_PAGE)
+    @categories = Category.page params[:page]
   end
 
   # GET /categories/1 or /categories/1.json

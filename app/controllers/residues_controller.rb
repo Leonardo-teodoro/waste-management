@@ -5,15 +5,7 @@ class ResiduesController < ApplicationController
   RESIDUES_PER_PAGE = 1
   # GET /residues or /residues.json
   def index
-    @page = params.fetch(:page, 1).to_i
-    @page = 1 if @page == 0
-    # Get the total number of residues
-    count = Residue.all.count
-
-    # Get the number of pages
-    @pages = ( count / RESIDUES_PER_PAGE)
-    @pages = @pages + 1 if RESIDUES_PER_PAGE > count 
-    @residues = Residue.offset((@page-1)*RESIDUES_PER_PAGE).limit(RESIDUES_PER_PAGE)
+    @residues = Residue.page params[:page]
   end
 
   # GET /residues/1 or /residues/1.json
