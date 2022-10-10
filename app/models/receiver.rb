@@ -1,3 +1,18 @@
+# @name [String]
+# @email [String]
+# @condition [Boolean]
+# @truly_linfo [Boolean]
+# @cep [String]
+# @street [String]
+# @number [Integer]
+# @complement [String]
+# @approved [Boolean]
+# @link [String]
+# @category_id [Integer]
+# @residue_id[Integer]
+
+
+
 class Receiver < ApplicationRecord
   has_one :category
   has_one :residue

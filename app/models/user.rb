@@ -1,3 +1,10 @@
+# @username [String]
+# @email [String]
+# @provider [String]
+# @blocked [Boolean]
+# @password_digest [String] encrypted password
+# @unconfirmed_email [String]
+
 class User < ApplicationRecord
   
   CONFIRMATION_TOKEN_EXPIRATION = 10.minutes
