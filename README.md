@@ -12,7 +12,8 @@ First, you'll need to configure your project with:
 
 ```
 bundle install
-yarn run css:build
+yarn
+yarn run build:css
 ```
 
 Then, set the database via:
